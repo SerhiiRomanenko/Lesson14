@@ -10,7 +10,12 @@
     
     <script>
 
-      function myBind(useFunc, newContext, ...params) {
+
+
+
+
+
+function myBind(useFunc, newContext, ...params) {
         return useFunc.call(newContext, ...params);
       }
 
@@ -34,6 +39,54 @@ also I live in ${country} and I am good at ${hobby}`;
       console.log(myBind(foo));
       console.log(myBind(foo, Masha));
       console.log(myBind(Masha.logInfo, Masha, 'doctor', 'USA', 'football'));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//     function myBind(useFunc, newContext, ...params) {
+//         var newFunc = () => useFunc.call(newContext, ...params);
+//         return newFunc();
+//       }
+
+//       function foo () {
+//         return this.name;
+//       }
+
+//       let name = 'Sergey';
+//       let age = 30;
+//       let job = 'teacher';
+
+//       const Masha = {
+//         name: 'Masha',
+//         age: 33,
+//         logInfo: function(job = 'unemployed', country = 'Ukraine', hobby = 'programming') {
+//           return `My name is ${this.name} and I am a ${job}, 
+// also I live in ${country} and I am good at ${hobby}`;
+//         }
+//       }
+
+//       console.log(myBind(foo));
+//       console.log(myBind(foo, Masha));
+//       console.log(myBind(Masha.logInfo, Masha, 'doctor', 'USA', 'football'));
 
     </script>
 
