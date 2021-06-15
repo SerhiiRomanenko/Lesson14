@@ -10,42 +10,30 @@
     
     <script>
 
-      const lena = {
-        name: 'Lena',
+      function myBind(useFunc, newContext, ...params) {
+        return useFunc.call(newContext, ...params);
+      }
+
+      function foo () {
+        return this.name;
+      }
+
+      let name = 'Sergey';
+      let age = 30;
+      let job = 'teacher';
+
+      const Masha = {
+        name: 'Masha',
         age: 33,
+        logInfo: function(job = 'unemployed', country = 'Ukraine', hobby = 'programming') {
+          return `My name is ${this.name} and I am a ${job}, 
+also I live in ${country} and I am good at ${hobby}`;
+        }
       }
 
-      function myBind(target  = window) {
-        
-        // console.log(params);
-        return target;
-      }
-      
-      console.log(myBind)
-
-      
-      this.x = 9;
-      var module = {
-        x: 81,
-        getX: function() { return this.x; }
-      };
-
-      console.log(module.getX()); // 81
-
-      var getX = module.getX;
-      console.log(getX()); // 9, поскольку в этом случае this ссылается на глобальный объект
-
-      // создаём новую функцию с this, привязанным к module
-      var boundGetX = getX.bind(module);
-      console.log(boundGetX()); // 81
-
-
-
-// function foo(...args) {
-//   return a + b;
-// }
-// console.log(foo());
-
+      console.log(myBind(foo));
+      console.log(myBind(foo, Masha));
+      console.log(myBind(Masha.logInfo, Masha, 'doctor', 'USA', 'football'));
 
     </script>
 
