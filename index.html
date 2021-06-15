@@ -11,8 +11,8 @@
     <script>
 
     function myBind(useFunc, newContext, ...params) {
-        let newFunc = () => useFunc.call(newContext, ...params);
-        return newFunc();
+        let newBindFunc = () => useFunc.call(newContext, ...params);
+        return newBindFunc();
       }
 
       function foo () {
