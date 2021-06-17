@@ -12,7 +12,7 @@
 
     function myBind(useFunc, newContext, ...params) {
         return function (...args) {
-          return useFunc.call(newContext, ...params.concat(args)) 
+          return useFunc.call(newContext, ...params, ...args) 
         };
       }
 
@@ -34,7 +34,7 @@ also I live in ${country} and I am good at ${hobby}`;
       }
 
       console.log(myBind(foo, Masha)());
-      console.log(myBind(Masha.logInfo, Masha, 'doctor') ('USA', 'football'));
+      console.log(myBind(Masha.logInfo, Masha, 'doctor') ('China', 'football'));
       console.log(Masha.logInfo.bind(Masha, 'doctor', 'USA')('football', 'adasda', 'asdasd'));
       console.log(myBind(Masha.logInfo, Masha,'doctor', 'USA', 'football', 'asdasd', 'asdasda')());
 
