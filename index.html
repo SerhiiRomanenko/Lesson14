@@ -11,8 +11,9 @@
     <script>
 
     function myBind(useFunc, newContext, ...params) {
-        let newBindFunc = () => useFunc.call(newContext, ...params);
-        return newBindFunc();
+        return function (...args) {
+          return useFunc.call(newContext, ...params.concat(args)) 
+        };
       }
 
       function foo () {
@@ -32,9 +33,10 @@ also I live in ${country} and I am good at ${hobby}`;
         }
       }
 
-      console.log(myBind(foo));
-      console.log(myBind(foo, Masha));
-      console.log(myBind(Masha.logInfo, Masha, 'doctor', 'USA', 'football'));
+      console.log(myBind(foo)());
+      console.log(myBind(foo, Masha)());
+      console.log(myBind(Masha.logInfo, Masha,) ('doctor', 'USA', 'football'));
+      console.log(myBind(Masha.logInfo, Masha,'doctor', 'USA', 'football')());
 
     </script>
 
